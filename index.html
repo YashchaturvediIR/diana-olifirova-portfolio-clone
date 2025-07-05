@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diana Olifirova | Cinematographer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .video-container {
+            position: absolute;
+            top: -5%;
+            left: -5%;
+            width: 110%;
+            height: 110%;
+            overflow: hidden;
+            z-index: 0;
+            filter: grayscale(100%);
+            opacity: 0.8;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: scale(1.05);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 110vw;
+            height: 110vh;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @media (min-aspect-ratio: 16/9) {
+            .video-container iframe {
+                height: 62.25vw;
+            }
+        }
+        @media (max-aspect-ratio: 16/9) {
+            .video-container iframe {
+                width: 195.78vh;
+            }
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            height: 100vh;
+            background-color: #000;
+            cursor: pointer;
+            scroll-snap-align: start;
+        }
+
+        .project-card:hover .video-container {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .project-card:hover .video-container iframe {
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+
+        .project-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+            color: white;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 2;
+        }
+
+        .project-card:hover .project-info {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            padding: 2rem;
+            mix-blend-mode: difference;
+        }
+
+        .filter-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.2);
+            z-index: 1;
+            pointer-events: none;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover .filter-overlay {
+            opacity: 0;
+        }
+
+        .scroll-container {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .about-section, .testimonials-section, .contact-section {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            background: #000;
+            display: flex;
+            align-items: center;
+            padding: 4rem 2rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
+        }
+
+        .quote-mark {
+            font-size: 4rem;
+            line-height: 0;
+            height: 40px;
+            opacity: 0.2;
+            font-family: Georgia, serif;
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+        }
+
+        .contact-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .contact-button::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: white;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-button:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+    </style>
+</head>
+<body class="bg-black font-poppins">
+    <header class="header">
+        <h1 class="text-4xl md:text-5xl font-light text-white mb-2">Diana Olifirova</h1>
+        <p class="text-xl text-white italic">Cinematographer</p>
+    </header>
+
+    <main class="scroll-container">
+        <!-- Bridgerton Project -->
+        <section class="project-card" onclick="window.location.href='https://www.youtube.com/watch?v=kcfs1-ryKWE'">
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/kcfs1-ryKWE?autoplay=1&mute=1&loop=1&playlist=kcfs1-ryKWE&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1"
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="filter-overlay"></div>
+            <div class="project-info">
+                <h2 class="text-2xl font-light mb-2">Bridgerton s3 / Netflix</h2>
+                <p class="text-lg mb-4">dir. ANDREW AHN</p>
+            </div>
+        </section>
+
+        <!-- Project 2 -->
+        <section class="project-card" onclick="window.location.href='https://youtu.be/MjHxvXJ2X4o'">
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/MjHxvXJ2X4o?autoplay=1&mute=1&loop=1&playlist=MjHxvXJ2X4o&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1"
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="filter-overlay"></div>
+            <div class="project-info">
+                <h2 class="text-2xl font-light mb-2">Project 2</h2>
+                <p class="text-lg mb-4">Director Name</p>
+            </div>
+        </section>
+
+        <!-- Project 3 -->
+        <section class="project-card" onclick="window.location.href='https://youtu.be/M8eXvjLnKWY'">
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/M8eXvjLnKWY?autoplay=1&mute=1&loop=1&playlist=M8eXvjLnKWY&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1"
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="filter-overlay"></div>
+            <div class="project-info">
+                <h2 class="text-2xl font-light mb-2">Project 3</h2>
+                <p class="text-lg mb-4">Director Name</p>
+            </div>
+        </section>
+
+        <!-- Project 4 -->
+        <section class="project-card" onclick="window.location.href='https://youtu.be/nJnDM4-DIas'">
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/nJnDM4-DIas?autoplay=1&mute=1&loop=1&playlist=nJnDM4-DIas&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1"
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="filter-overlay"></div>
+            <div class="project-info">
+                <h2 class="text-2xl font-light mb-2">Project 4</h2>
+                <p class="text-lg mb-4">Director Name</p>
+            </div>
+        </section>
+
+        <!-- Project 5 -->
+        <section class="project-card" onclick="window.location.href='https://youtu.be/8jT9ygmMvMg'">
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/8jT9ygmMvMg?autoplay=1&mute=1&loop=1&playlist=8jT9ygmMvMg&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1"
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="filter-overlay"></div>
+            <div class="project-info">
+                <h2 class="text-2xl font-light mb-2">Project 5</h2>
+                <p class="text-lg mb-4">Director Name</p>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section">
+            <div class="container mx-auto max-w-6xl px-4">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6">
+                        <h2 class="text-3xl md:text-4xl font-light text-white mb-8">About Me</h2>
+                        <p class="text-gray-300 leading-relaxed text-lg">
+                            As a cinematographer, I specialize in crafting visual narratives that captivate and inspire. With years of experience in both commercial and narrative filmmaking, I bring a unique perspective to every project.
+                        </p>
+                        <p class="text-gray-300 leading-relaxed text-lg">
+                            My work spans across various genres, from period dramas to contemporary commercials, always striving to create memorable and impactful visual experiences.
+                        </p>
+                        <div class="space-y-6 pt-6">
+                            <div>
+                                <h3 class="text-white font-light text-xl mb-3">Technical Expertise</h3>
+                                <p class="text-gray-400">Arri Alexa Mini LF, RED Cameras, Anamorphic Lenses</p>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-light text-xl mb-3">Industry Experience</h3>
+                                <p class="text-gray-400">Netflix, BBC, Commercial Campaigns</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-8">
+                        <h3 class="text-2xl font-light text-white mb-6">Selected Clients</h3>
+                        <div class="grid grid-cols-2 gap-8">
+                            <div class="text-gray-400 text-lg">Netflix</div>
+                            <div class="text-gray-400 text-lg">BBC</div>
+                            <div class="text-gray-400 text-lg">Nike</div>
+                            <div class="text-gray-400 text-lg">Channel 4</div>
+                            <div class="text-gray-400 text-lg">Amazon</div>
+                            <div class="text-gray-400 text-lg">HBO</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section">
+            <div class="container mx-auto max-w-6xl px-4">
+                <h2 class="text-3xl md:text-4xl font-light text-white mb-16 text-center">Client Testimonials</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card">
+                        <div class="quote-mark">"</div>
+                        <p class="text-gray-300 mb-8 leading-relaxed text-lg pt-8">
+                            Diana's eye for composition and lighting is exceptional. She brought our vision to life with stunning cinematography that elevated the entire production.
+                        </p>
+                        <div>
+                            <p class="text-white font-light text-lg">Andrew Ahn</p>
+                            <p class="text-gray-400">Director, Bridgerton S3</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card">
+                        <div class="quote-mark">"</div>
+                        <p class="text-gray-300 mb-8 leading-relaxed text-lg pt-8">
+                            Working with Diana was a revelation. Her technical expertise combined with artistic vision created imagery that exceeded our expectations.
+                        </p>
+                        <div>
+                            <p class="text-white font-light text-lg">Sarah Johnson</p>
+                            <p class="text-gray-400">Creative Director, Nike</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card">
+                        <div class="quote-mark">"</div>
+                        <p class="text-gray-300 mb-8 leading-relaxed text-lg pt-8">
+                            Diana's ability to capture emotion through her lens is unparalleled. She brings a unique perspective that transforms every scene.
+                        </p>
+                        <div>
+                            <p class="text-white font-light text-lg">Michael Chen</p>
+                            <p class="text-gray-400">Producer, BBC Drama</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="container mx-auto max-w-4xl px-4">
+                <div class="text-center space-y-12">
+                    <h2 class="text-4xl md:text-5xl font-light text-white mb-8">Let's Work Together</h2>
+                    <p class="text-gray-300 text-xl mb-12 leading-relaxed">
+                        Ready to bring your vision to life? I'm always excited to collaborate on new projects.
+                    </p>
+                    <div class="space-y-8">
+                        <a href="mailto:chaturvediyash624@gmail.com" 
+                           class="contact-button inline-block text-white text-2xl hover:text-gray-300 transition-all duration-300">
+                            Contact Today
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
