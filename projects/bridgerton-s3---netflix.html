@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bridgerton s3 / Netflix | Diana Olifirova</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -1;
+            filter: grayscale(100%);
+            opacity: 0.3;
+        }
+
+        .content-overlay {
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
+        }
+
+        .scroll-content {
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .clip-hover {
+            transition: all 0.3s ease;
+        }
+
+        .clip-hover:hover {
+            filter: grayscale(0%);
+            transform: scale(1.02);
+        }
+
+        .clip-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .clip-container video {
+            filter: grayscale(100%);
+            transition: all 0.5s ease;
+        }
+
+        .clip-container:hover video {
+            filter: grayscale(0%);
+        }
+    </style>
+</head>
+<body class="bg-black text-white font-poppins">
+    <video class="video-background" autoplay muted loop playsinline>
+        <!-- Replace YOUR_BRIDGERTON_VIDEO_URL with your video URL -->
+        <source src="YOUR_BRIDGERTON_VIDEO_URL" type="video/mp4">
+    </video>
+
+    <div class="content-overlay min-h-screen">
+        <nav class="p-4 fixed top-0 left-0 right-0 z-10 mix-blend-difference">
+            <a href="../index.html" class="text-white hover:text-gray-300 transition-colors inline-flex items-center">
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                </svg>
+                Back to Projects
+            </a>
+        </nav>
+
+        <div class="scroll-content">
+            <main class="container mx-auto px-4 pt-24">
+                <header class="mb-12 mt-12">
+                    <h1 class="text-4xl md:text-5xl font-light mb-4">Bridgerton s3 / Netflix</h1>
+                    <p class="text-xl text-gray-300">dir. ANDREW AHN</p>
+                </header>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+                    <div>
+                        <h2 class="text-2xl font-light mb-6">Project Details</h2>
+                        <ul class="space-y-4 text-gray-300">
+                            <li><strong class="text-white">Client:</strong> Netflix</li>
+                            <li><strong class="text-white">Director:</strong> Andrew Ahn</li>
+                            <li><strong class="text-white">Year:</strong> 2023</li>
+                            <li><strong class="text-white">Role:</strong> Cinematographer</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h2 class="text-2xl font-light mb-6">Technical Specifications</h2>
+                        <ul class="space-y-4 text-gray-300">
+                            <li><strong class="text-white">Camera:</strong> Arri Alexa Mini LF</li>
+                            <li><strong class="text-white">Lenses:</strong> Cooke S7/i Full Frame</li>
+                            <li><strong class="text-white">Format:</strong> 4K HDR</li>
+                            <li><strong class="text-white">Aspect Ratio:</strong> 2.39:1</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="prose prose-invert max-w-none mb-12">
+                    <p class="text-lg text-gray-300">
+                        A captivating period drama that brings the romance and intrigue of Regency-era London to life. 
+                        This season continues to showcase the stunning cinematography that has become a hallmark of the series, 
+                        with carefully crafted lighting and composition that enhances the show's signature visual style.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                    <div class="clip-container aspect-w-16 aspect-h-9 bg-gray-900">
+                        <video class="w-full h-full object-cover clip-hover" autoplay muted loop playsinline>
+                            <source src="YOUR_CLIP_1_URL" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="clip-container aspect-w-16 aspect-h-9 bg-gray-900">
+                        <video class="w-full h-full object-cover clip-hover" autoplay muted loop playsinline>
+                            <source src="YOUR_CLIP_2_URL" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="clip-container aspect-w-16 aspect-h-9 bg-gray-900">
+                        <video class="w-full h-full object-cover clip-hover" autoplay muted loop playsinline>
+                            <source src="YOUR_CLIP_3_URL" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="container mx-auto px-4 py-8 border-t border-gray-800">
+                <p class="text-center text-gray-500">© 2024 Diana Olifirova. All rights reserved.</p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
